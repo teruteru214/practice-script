@@ -5,13 +5,18 @@ const rl = createInterface({
   output: process.stdout
 })
 
-const sum = (...args: number[]): number => {
-  let result = 0;
-  for (const num of args) {
-    result += num;
-  }
-  return result;
-};
+type HasName = {
+  name: string;
+}
+type HasNameAndAge = {
+  name: string;
+  age: number;
+}
 
-const nums = [1, 2, 3, 4, 5];
-console.log(sum(...nums));
+const fromAge = (age: number): HasNameAndAge => ({
+  name: "John Smith",
+  age,
+});
+
+const f: (age: number) => HasName = fromAge;
+const obj: HasName = f(100);
