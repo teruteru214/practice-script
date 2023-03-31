@@ -1,3 +1,4 @@
+import { cpuUsage } from "process";
 import { createInterface } from "readline";
 
 const rl = createInterface({
@@ -5,18 +6,23 @@ const rl = createInterface({
   output: process.stdout
 })
 
-type HasName = {
+const User {
   name: string;
-}
-type HasNameAndAge = {
-  name: string;
-  age: number;
+  #age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.#age = age;
+  }
+
+  public isAdult(): boolean {
+    return this.#age >= 20;
+  }
+
+  public filete
 }
 
-const fromAge = (age: number): HasNameAndAge => ({
-  name: "John Smith",
-  age,
-});
+const uhyo = new User("uhyo", 26;)
+const isAdult = uhyo.isAdult;
 
-const f: (age: number) => HasName = fromAge;
-const obj: HasName = f(100);
+console.log(isAdult());
